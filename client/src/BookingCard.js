@@ -2,9 +2,9 @@ const BookingCard = ({booking}) => {
 
     return (
         <>
-        <p>Name: {booking.name}</p>
-        <p>Email: {booking.email}</p>
-        <p>Status: {booking.status}</p>
+        <p><b>Name:</b> {booking.name}</p>
+        <p><b>Email:</b> {booking.email}</p>
+        <p><b>Status:</b> {booking.status}</p>
         </>
 
     )

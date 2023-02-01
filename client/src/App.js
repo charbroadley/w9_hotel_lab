@@ -2,6 +2,7 @@ import './App.css';
 import {getBookings} from "./BookingsService.js"
 import BookingGrid from './BookingsGrid';
 import {useState, useEffect} from "react"
+import BookingsForm from './BookingsForm';
 
 function App() {
 
@@ -14,12 +15,13 @@ function App() {
     })
   }, [])
 
-
-console.log (bookings)
-
+  const addBooking = (booking) => {
+    setBookings([...bookings, booking])
+  }
 
   return (
     <>
+    <BookingsForm addBooking={addBooking}/>
     <BookingGrid bookings={bookings}/>
     </>
   );
