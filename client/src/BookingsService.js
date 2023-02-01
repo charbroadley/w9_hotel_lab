@@ -11,5 +11,11 @@ export const postBooking = (payload) => {
         body: JSON.stringify(payload),
         headers: {'Content-Type': 'application/json'}
     })
-    .then(res => res.json())
+    .then(res =>  res.json())
+}
+
+export const deleteBooking = (id) => {
+    return fetch(baseURL + id, {
+        method: 'DELETE'
+    })
 }

@@ -19,10 +19,15 @@ function App() {
     setBookings([...bookings, booking])
   }
 
+  const removeBooking = (id) => {
+    const bookingsToKeep = bookings.filter(booking => booking._id !== id)
+    setBookings(bookingsToKeep)
+  }
+
   return (
     <>
     <BookingsForm addBooking={addBooking}/>
-    <BookingGrid bookings={bookings}/>
+    <BookingGrid bookings={bookings} removeBooking={removeBooking}/>
     </>
   );
 }

@@ -3,6 +3,7 @@ import {postBooking} from "./BookingsService"
 
 const BookingsForm = ({addBooking}) => {
 
+    // there should all have separate state
     const [formData, setFormData] = useState (
         {
         name: "",
@@ -18,14 +19,18 @@ const BookingsForm = ({addBooking}) => {
 
     const onSubmit = (evt) => {
         evt.preventDefault(); 
+
+        const copyOfFormData = {...formData}
         postBooking(formData)
             .then((data) => {
-                addBooking(data)
-            })
-        setFormData({
-            name: "",
-            email: "",
-            status: "",
+                copyOfFormData._id = data.insertedId
+                addBooking(copyOfFormData)
+            }).then(() => {
+                setFormData({
+                    name: "",
+                    email: "",
+                    status: "",
+                    })
             })
         }
 
