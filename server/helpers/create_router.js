@@ -1,6 +1,9 @@
 const express = require("express")
 // const {ReplSet} = require("mongodb/lib/core")
-const ObjectID = require("mongodb").ObjectID
+const ObjectId = require("mongodb").ObjectId
+// In the newer version ObjectID is an object and not a function
+// In the import it should have a lower case d
+// In the function you need to add the keyword 'new' as you're making a new instance of the object, also ObjectId needs a lower case d there as well
 
 const createRouter = function (collection) {
     
@@ -37,7 +40,7 @@ const createRouter = function (collection) {
     router.delete("/:id", (req, res) => {
         const id = req.params.id
         collection.deleteOne({
-            _id: ObjectID(id)
+            _id: new ObjectId(id)
         })
         .then(result => {
             res.json(result)
